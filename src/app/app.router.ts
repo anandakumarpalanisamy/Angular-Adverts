@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/adverts', pathMatch: 'full' },
-    { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'register', loadChildren: './register/register.module#RegisterModule' },
     { path: 'adverts', loadChildren: './adverts/adverts.module#AdvertsModule' },
     { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
 ];
