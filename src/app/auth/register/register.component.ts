@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../core/providers/auth.service';
 import { Router } from '@angular/router';
-import { SessionService } from '../core/providers/session.service';
-import { AuthData } from '../core/models/AuthData.model';
+import { AuthService } from '../../core/providers/auth.service';
+import { SessionService } from '../../core/providers/session.service';
+import { AuthData } from '../../core/models/AuthData.model';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private sessionService: SessionService) { }
 
   onSubmitForm() {
-    if(this.registerForm.valid){
+    if (this.registerForm.valid) {
       this.authService.registerUser(this.registerForm.value).subscribe(
         (data: AuthData) => {
           console.log(data);
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         }, (error) => {
           console.log(error);
         }
-      )
+      );
     } else {
       return false;
     }

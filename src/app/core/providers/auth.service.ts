@@ -7,12 +7,12 @@ export class AuthService {
 
   constructor(private httpAuth: HttpAuthService) { }
 
-  registerUser(data) { 
+  registerUser(data) {
     return this.httpAuth.registerUser(data);
   }
 
   loginUser(data) {
-    return this.httpAuth.registerUser(data);
+    return this.httpAuth.loginUser(data);
   }
 
 }

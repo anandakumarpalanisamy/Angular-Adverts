@@ -6,6 +6,7 @@ import { HttpProfileService } from './http-services/http-profile.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './providers/auth.service';
 import { SessionService } from './providers/session.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const HTTP_PROVIDERS = [
   HttpAuthService,
@@ -15,7 +16,10 @@ const HTTP_PROVIDERS = [
 const SERVICE_PROVIDERS = [
   AuthService,
   SessionService
-]
+];
+const GUARD_PROVIDERS = [
+  AuthGuard
+];
 
 @NgModule({
   imports: [
@@ -23,7 +27,7 @@ const SERVICE_PROVIDERS = [
     HttpClientModule
   ],
   providers: [
-    ...HTTP_PROVIDERS, ...SERVICE_PROVIDERS
+    ...HTTP_PROVIDERS, ...SERVICE_PROVIDERS, ...GUARD_PROVIDERS
   ]
 })
 export class CoreModule { }

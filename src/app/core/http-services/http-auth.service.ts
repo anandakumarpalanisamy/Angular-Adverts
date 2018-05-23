@@ -8,11 +8,11 @@ export class HttpAuthService {
   constructor( private http: HttpClient ) { }
 
   registerUser(data) {
-   return this.http.post(Endpoints.register, data)
+   return this.http.post(Endpoints.register, data);
   }
 
   loginUser(data) {
-    return this.http.post(Endpoints.login, data)
+    return this.http.post(Endpoints.login, data);
   }
 
 }

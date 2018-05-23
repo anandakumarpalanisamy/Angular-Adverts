@@ -4,13 +4,15 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 export class SessionService {
 
-  public userData = new BehaviorSubject(null); 
+  public userData = new BehaviorSubject(null);
 
-  constructor() { }
+  constructor() {
+    this.userData.next(JSON.parse(localStorage.getItem('user_data')));
+  }
 
   private setStrageData(data, key) {
       localStorage.setItem(key, JSON.stringify(data));
-  };
+  }
 
   private getStrageData(key) {
     return Observable.create( (observer) => {
@@ -18,10 +20,14 @@ export class SessionService {
       observer.next(JSON.parse(data));
       observer.complete();
     });
-  };
+  }
 
   get token() {
     return this.getStrageData('auth_token');
+  }
+
+  get loginStatus() {
+    return this.token;
   }
 
   public setToken(data) {

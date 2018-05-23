@@ -1,0 +1,22 @@
+<div class='login-wrapper d-flex align-items-center justify-content-center'>
+  <div class="login-window p-3">
+    <app-title>
+      <h2>login</h2>
+    </app-title>
+    <div class='login-form-wrapper py-2'>
+      <form [formGroup]="loginForm" (submit)='onSubmitForm()'>
+        <div class="form-group">
+          <label for="loginEmail">Email address</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword1">Password</label>
+          <input type="password" class="form-control" id="loginPassword1" placeholder="Password" formControlName="password">
+        </div>
+        <div class='d-flex justify-content-end'>
+            <button type="submit" class="btn primary mt-1">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
