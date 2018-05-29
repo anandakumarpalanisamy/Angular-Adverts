@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SessionService } from '../core/providers/session.service';
 import { UserModel } from '../core/models/profile.model';
 import { Subscription } from 'rxjs';
+import { AdvertsService } from './adverts.service';
 
 @Component({
   selector: 'app-adverts',
@@ -12,7 +13,7 @@ export class AdvertsComponent implements OnInit, OnDestroy {
 
   private userDataSubscriber$: Subscription;
 
-  constructor(private sessionService: SessionService) {
+  constructor(private sessionService: SessionService, private advertsService: AdvertsService) {
     this.userDataSubscriber$ = this.sessionService.userData.subscribe(
       (data) => {
         console.log(data);
@@ -21,7 +22,7 @@ export class AdvertsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    
   }
 
   ngOnDestroy() {

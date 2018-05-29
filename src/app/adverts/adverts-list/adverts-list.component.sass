@@ -1,0 +1,18 @@
+@import '../../../assets/styles/variables'
+.advert-item
+    height: 220px
+    border-bottom: 1px solid $basic
+    padding: 10px
+.advert-photo
+    & img
+        height: 200px
+        width: 200px
+        border-radius: 100%
+.advert-info
+    font-size: 24px
+    width: calc( 100% - 200px - 0.50rem - 10px)
+    & .advert-info-text
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        

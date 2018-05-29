@@ -4,10 +4,10 @@
       <img src="https://angular.io/assets/images/logos/angular/angular_whiteTransparent.png" alt="logo" class='h-100 w-100'>
     </div>
     <div class='header-menu-wrapper'>
-      <div>
-        <button type="button" class="btn warn  mr-2">Login</button>
-        <button type="button" class="btn basic ">Register</button>
-      </div>
+      <app-action-menu *ngIf="!!userData; else authButtons"></app-action-menu>
+      <ng-template #authButtons>
+          <app-auth-buttons></app-auth-buttons>
+      </ng-template>
     </div>
   </div>
 </header>

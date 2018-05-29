@@ -7,11 +7,11 @@ export class HttpAuthService {
 
   constructor( private http: HttpClient ) { }
 
-  registerUser(data) {
+  public registerUser(data) {
    return this.http.post(Endpoints.register, data);
   }
 
-  loginUser(data) {
+  public loginUser(data) {
     return this.http.post(Endpoints.login, data);
   }
 

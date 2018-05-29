@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SessionService {
 
   public userData = new BehaviorSubject(null);
+  public emitLogout = new Subject();
 
-  constructor() {
+  constructor(private router: Router) {
     this.userData.next(JSON.parse(localStorage.getItem('user_data')));
   }
 
@@ -38,5 +40,5 @@ export class SessionService {
     this.userData.next(data);
     return this.setStrageData(data, 'user_data');
   }
-
+  
 }
