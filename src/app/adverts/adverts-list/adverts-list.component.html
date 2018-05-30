@@ -1,19 +1,21 @@
-<div class="advert-item d-flex" *ngFor="let advert of advertsList">
-  <div class='advert-photo mr-3'> 
-    <img [src]="advert.images[0].file" alt='advert' *ngIf="advert.images[0]; else noAdvertImage">
-    <ng-template #noAdvertImage>
-      <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert">
-    </ng-template>
-  </div>
-  <div class='advert-info'>
-    <h1 class='advert-info-title'>
-      {{advert.theme}}
-    </h1>
-    <div class='advert-info-text mb-2'>
-      {{advert.text}}
+<div class="adverts-list-wrapper" appInfinityScroll (scrollDown)='loadAdverts(endpointLink)' [requestComplete]='requestComplete'>
+  <div class="advert-item d-flex" *ngFor="let advert of advertsList">
+    <div class='advert-photo mr-3'>
+      <img [src]="advert?.images[0].file" alt='advert' *ngIf="advert?.images[0]; else noAdvertImage">
+      <ng-template #noAdvertImage>
+        <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert">
+      </ng-template>
     </div>
-    <div class='advert-info-price mb-2'>
-      Price: {{advert.price}} $
+    <div class='advert-info'>
+      <h1 class='advert-info-title'>
+        {{advert?.theme}}
+      </h1>
+      <div class='advert-info-text mb-2'>
+        {{advert?.text}}
+      </div>
+      <div class='advert-info-price mb-2'>
+        Price: {{advert?.price}} $
+      </div>
     </div>
   </div>
 </div>

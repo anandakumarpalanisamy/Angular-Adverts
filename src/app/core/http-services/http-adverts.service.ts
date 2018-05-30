@@ -9,8 +9,12 @@ export class HttpAdvertsService {
 
   }
 
-  public advertsList() {
-    return this.http.get(Endpoints.adverts);
+  public advertsList(link) {
+    return this.http.get(link);
+  }
+
+  public advertById(id) {
+    return this.http.get(`${Endpoints.adverts}/${id}`);
   }
 
 }

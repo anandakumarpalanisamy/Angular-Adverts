@@ -7,9 +7,9 @@ import { HttpProfileService } from './http-services/http-profile.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './providers/auth.service';
 import { SessionService } from './providers/session.service';
-import { AdvertsService } from '../adverts/adverts.service';
 
 import { AuthGuard } from './guards/auth.guard';
+import { AdvertsService } from '../adverts/shared/adverts.service';
 
 const HTTP_PROVIDERS = [
   HttpAuthService,

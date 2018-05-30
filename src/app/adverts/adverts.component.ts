@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SessionService } from '../core/providers/session.service';
 import { UserModel } from '../core/models/profile.model';
 import { Subscription } from 'rxjs';
-import { AdvertsService } from './adverts.service';
+import { AdvertsService } from './shared/adverts.service';
 
 @Component({
   selector: 'app-adverts',

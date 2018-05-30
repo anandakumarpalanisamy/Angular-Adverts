@@ -20,3 +20,10 @@ export interface ImageModel {
     advert: number;
     file: string;
 }
+
+export interface infinityAdvertsModel {
+    count: number;
+    next: string;
+    previous: string;
+    results: AdvertModel[];
+}

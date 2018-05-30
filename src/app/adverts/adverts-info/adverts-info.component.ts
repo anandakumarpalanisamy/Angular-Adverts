@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvertsService } from '../shared/adverts.service';
+import { AdvertModel } from '../../core/models/advert.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-adverts-info',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdvertsInfoComponent implements OnInit {
 
-  constructor() { }
+  public advertData: AdvertModel;
+
+  constructor(private advertService: AdvertsService,private activeRouter: ActivatedRoute  ) {
+    this.activeRouter.params.subscribe(params => {
+      this.getSelectedAdvert(params['id']);
+    });
+  }
+
+  getSelectedAdvert(id) {
+    this.advertService.getAdvertById(id).subscribe(
+      (data: AdvertModel) => {
+        this.advertData = data;
+      }, (error) => {
+        console.log(error);
+      }
+    )
+  }
 
   ngOnInit() {
+    
   }
 
 }
