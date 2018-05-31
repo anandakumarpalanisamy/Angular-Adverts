@@ -1,15 +1,23 @@
+<div class='list-header d-flex justify-content-between'>
+  <div class='list-header-add' (click)='showCreateProduct()'>
+    <fa name='plus'></fa>
+  </div>
+  <div>
+    <fa name='star'></fa>
+  </div>
+</div>
 <div class="adverts-list-wrapper" appInfinityScroll (scrollDown)='loadAdverts(endpointLink)' [requestComplete]='requestComplete'>
   <div class="advert-item d-flex" *ngFor="let advert of advertsList">
     <div class='advert-photo mr-3'>
-      <img [src]="advert?.images[0].file" alt='advert' *ngIf="advert?.images[0]; else noAdvertImage">
+      <img [src]="advert?.images[0].file" alt='advert' *ngIf="advert?.images[0]; else noAdvertImage" (click)='getMoreInfo(advert.pk)'>
       <ng-template #noAdvertImage>
-        <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert">
+        <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert" (click)='getMoreInfo(advert.pk)'>
       </ng-template>
     </div>
     <div class='advert-info'>
-      <h1 class='advert-info-title'>
+      <h4 class='advert-info-title'>
         {{advert?.theme}}
-      </h1>
+      </h4>
       <div class='advert-info-text mb-2'>
         {{advert?.text}}
       </div>

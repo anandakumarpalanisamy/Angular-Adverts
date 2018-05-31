@@ -4,12 +4,14 @@ import { AdvertsComponent } from './adverts.component';
 import { AdvertsInfoComponent } from './adverts-info/adverts-info.component';
 import { AdvertsEditComponent } from './adverts-edit/adverts-edit.component';
 import { AdvertsEmptyComponent } from './adverts-empty/adverts-empty.component';
+import { AdvertsCreateComponent } from './adverts-create/adverts-create.component';
 
 const routes: Routes = [
     { path: '', component: AdvertsComponent, children: [
         { path: '', component: AdvertsEmptyComponent },
         { path: 'view/:id', component: AdvertsInfoComponent },
-        { path: 'edit/:id', component: AdvertsEditComponent }
+        { path: 'edit/:id', component: AdvertsEditComponent },
+        { path: 'create', component: AdvertsCreateComponent },
     ]},
 ];
 

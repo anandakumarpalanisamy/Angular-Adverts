@@ -7,13 +7,17 @@ import { AdvertsInfoComponent } from './adverts-info/adverts-info.component';
 import { AdvertsEditComponent } from './adverts-edit/adverts-edit.component';
 import { InfinityScrollModule } from '../ui/infinity-scroll/infinity-scroll.module';
 import { AdvertsEmptyComponent } from './adverts-empty/adverts-empty.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AdvertsCreateComponent } from './adverts-create/adverts-create.component';
+import { AdvertEditFormComponent } from './shared/advert-edit-form/advert-edit-form.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AdvertsRouterModule,
-    InfinityScrollModule
+    InfinityScrollModule,
+    AngularFontAwesomeModule
   ],
-  declarations: [AdvertsComponent, AdvertsListComponent, AdvertsInfoComponent, AdvertsEditComponent, AdvertsEmptyComponent]
+  declarations: [AdvertsComponent, AdvertsListComponent, AdvertsInfoComponent, AdvertsEditComponent, AdvertsEmptyComponent, AdvertsCreateComponent, AdvertEditFormComponent]
 })
 export class AdvertsModule { }
