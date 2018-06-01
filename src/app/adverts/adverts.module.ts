@@ -10,14 +10,29 @@ import { AdvertsEmptyComponent } from './adverts-empty/adverts-empty.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AdvertsCreateComponent } from './adverts-create/adverts-create.component';
 import { AdvertEditFormComponent } from './shared/advert-edit-form/advert-edit-form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ImageUploaderModule } from '../ui/image-uploader/image-uploader.module';
+import { TitleModule } from '../ui/title/title.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AdvertsRouterModule,
     InfinityScrollModule,
-    AngularFontAwesomeModule
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFontAwesomeModule,
+    ImageUploaderModule,
+    TitleModule
   ],
-  declarations: [AdvertsComponent, AdvertsListComponent, AdvertsInfoComponent, AdvertsEditComponent, AdvertsEmptyComponent, AdvertsCreateComponent, AdvertEditFormComponent]
+  declarations: [
+    AdvertsComponent,
+    AdvertsListComponent,
+    AdvertsInfoComponent, 
+    AdvertsEditComponent,
+    AdvertsEmptyComponent,
+    AdvertsCreateComponent,
+    AdvertEditFormComponent
+  ]
 })
 export class AdvertsModule { }

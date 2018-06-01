@@ -1,1 +1,10 @@
-<app-advert-edit-form></app-advert-edit-form>
+<div class='p-2'>
+    <app-title>
+        <h1>
+            Create new product      
+        </h1>
+    </app-title>
+    <div class='mt-3'>
+        <app-advert-edit-form (beforeSendData)='createAdvert($event)'></app-advert-edit-form>
+    </div>
+</div>

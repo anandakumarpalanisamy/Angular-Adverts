@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AdvertModel } from '../../../core/models/advert.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AdvertModel, ImageModel } from '../../../core/models/advert.model';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-advert-edit-form',
@@ -8,10 +9,62 @@ import { AdvertModel } from '../../../core/models/advert.model';
 })
 export class AdvertEditFormComponent implements OnInit {
 
+  @Output()
+  beforeSendData = new EventEmitter();
   @Input() advertData: AdvertModel;
   
-  constructor() {
-    console.log(this.advertData);  
+  advertForm = new FormGroup({
+    theme: new FormControl(),
+    text: new FormControl(),
+    price: new FormControl(),
+    is_active: new FormControl(),
+    contract_price: new FormControl()
+  })
+  imagesArray: ImageModel[];
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    if(this.advertData) {
+      this.advertForm = this.fb.group({
+        theme: [this.advertData.theme || '', [Validators.required]],
+        text: [ this.advertData.text || '', [Validators.required, Validators.minLength(6)]],
+        price: [this.advertData.price || 0, [Validators.required, Validators.minLength(12)]],
+        is_active: [this.advertData.is_active || true],
+        contract_price: [this.advertData.contract_price || false]
+      });
+    } else {
+      this.advertForm = this.fb.group({
+        theme: [ '', [Validators.required]],
+        text: [ '', [Validators.required, Validators.minLength(6)]],
+        price: [ 0, [Validators.required, Validators.minLength(12)]],
+        is_active: [true],
+        contract_price: [false]
+      });
+      
+    }
+  }
+
+  onSubmitForm(){ 
+    console.log(this.advertForm.value);
+    const advertVal = this.advertForm.value;
+    if(this.advertForm.valid) {
+      const advertObj = {
+        theme: advertVal.theme,
+        text: advertVal.text,
+        price: advertVal.price,
+        is_active: advertVal.is_active,
+        contract_price: advertVal.contract_price
+      }
+      this.beforeSendData.emit({advert: advertObj,images:this.imagesArray});
+    } else {
+      return false
+    }
+  }
+
+  setFileList(event) {
+    this.imagesArray = event;
   }
 
   ngOnInit() {

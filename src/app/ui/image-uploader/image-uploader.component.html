@@ -1,0 +1,20 @@
+
+<div class='upload-images'>
+  <div class='d-flex justify-content-end w-100'>
+    <div class='d-flex align-items-center justify-content-left w-100 mr-2'>
+      Add files to you advert
+    </div>
+      <div class='btn warn' (click)='callAddingFile()'>Select file</div>
+  </div>
+  <div class='file-list'>
+    <div class="file-item d-flex justify-content-between align-items-center p-2" *ngFor="let file of filesList"> 
+      <div class='w-100'>
+          {{file.name}}
+      </div>
+      <div class='remove-icon' (click)='removeFile(file)'> 
+        <fa name='times'></fa>
+      </div>
+    </div>
+  </div>
+    <input type="file" id='file-container' (change)="addNewImage($event)" class='d-none'>
+</div>

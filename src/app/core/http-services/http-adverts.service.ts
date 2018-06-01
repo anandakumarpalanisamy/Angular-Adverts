@@ -17,4 +17,7 @@ export class HttpAdvertsService {
     return this.http.get(`${Endpoints.adverts}/${id}`);
   }
 
+  public createAdvert(data) {
+    return this.http.post(`${Endpoints.adverts}`, data);
+  }
 }

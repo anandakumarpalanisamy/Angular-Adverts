@@ -6,12 +6,16 @@ export class AdvertsService {
 
   constructor(private httpAdverts: HttpAdvertsService) { }
 
-  getAdvertsList(link) {
+  public getAdvertsList(link) {
    return  this.httpAdverts.advertsList(link);
   }
 
-  getAdvertById(id) {
+  public getAdvertById(id) {
     return this.httpAdverts.advertById(id);
+  }
+
+  public createAdvert(data) {
+    return this.httpAdverts.createAdvert(data);
   }
 }
 
