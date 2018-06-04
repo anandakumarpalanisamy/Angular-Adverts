@@ -15,7 +15,7 @@ intercept (reqest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<an
       if ( localStorage.getItem('auth_token') !== null) {
         reqest = reqest.clone({
             setHeaders: {
-                Authorization: localStorage.getItem('auth_token'),
+                Authorization: `JWT ${localStorage.getItem('auth_token')}`,
                 Accept: 'application/json'
             }
         });

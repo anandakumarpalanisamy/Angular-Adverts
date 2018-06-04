@@ -12,8 +12,9 @@ export class SessionService {
     this.userData.next(JSON.parse(localStorage.getItem('user_data')));
   }
 
-  private setStrageData(data, key) {
-      localStorage.setItem(key, JSON.stringify(data));
+  private setStrageData(data, key, type) {
+    type === 'user' ?  localStorage.setItem(key, JSON.stringify(data)) : localStorage.setItem(key, data);
+     
   }
 
   private getStrageData(key) {
@@ -33,12 +34,12 @@ export class SessionService {
   }
 
   public setToken(data) {
-    return this.setStrageData(data, 'auth_token');
+    return this.setStrageData(data, 'auth_token', 'token');
   }
 
   public setUser(data) {
     this.userData.next(data);
-    return this.setStrageData(data, 'user_data');
+    return this.setStrageData(data, 'user_data', 'user');
   }
   
 }

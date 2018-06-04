@@ -47,7 +47,6 @@ export class AdvertEditFormComponent implements OnInit {
   }
 
   onSubmitForm(){ 
-    console.log(this.advertForm.value);
     const advertVal = this.advertForm.value;
     if(this.advertForm.valid) {
       const advertObj = {

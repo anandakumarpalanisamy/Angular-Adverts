@@ -20,4 +20,14 @@ export class HttpAdvertsService {
   public createAdvert(data) {
     return this.http.post(`${Endpoints.adverts}`, data);
   }
+
+  public addImageToAdvert(data, id) {
+    const dataObj = {
+      advert_pk: id,
+      advert: id,
+      file: data
+    }    
+    const url = `${Endpoints.adverts}${id}/image/`;
+    return this.http.post(url, dataObj);
+  }
 }

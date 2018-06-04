@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.authService.registerUser(this.registerForm.value).subscribe(
         (data: AuthData) => {
-          console.log(data);
           this.sessionService.setToken(data.token);
           this.sessionService.setUser(data.user);
           this.router.navigate(['/adverts']);
