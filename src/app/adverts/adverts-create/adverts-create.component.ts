@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdvertsService } from '../shared/adverts.service';
 import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
+import { AdvertModel, ImageModel } from '../../core/models/advert.model';
 @Component({
   selector: 'app-adverts-create',
   templateUrl: './adverts-create.component.html',
@@ -8,21 +10,13 @@ import { forkJoin } from 'rxjs';
 })
 export class AdvertsCreateComponent implements OnInit {
 
-  constructor( private advertService: AdvertsService) { }
+  constructor( private advertService: AdvertsService, private router: Router) { }
 
   createAdvert(data) {
     this.advertService.createAdvert(data).subscribe(
-      (newAdvertData) =>{
+      (newAdvertData: ImageModel) =>{
         console.log(newAdvertData);
-      //   const obsArray = this.advertService.addImagesToAdvert(newAdvertData , data.images);
-      //   debugger;
-      //   forkJoin(obsArray).subscribe(
-      //     (newImagesData) => {
-      //       console.log(newImagesData);
-      //     }, (error) => {
-      //       console.log(error);
-      //     }
-      //   );
+        this.router.navigate([`/adverts/view/${newAdvertData.advert}`])
       }, (error) => {
         console.log(error);
       }

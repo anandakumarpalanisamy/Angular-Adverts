@@ -21,6 +21,10 @@ export class HttpAdvertsService {
     return this.http.post(`${Endpoints.adverts}`, data);
   }
 
+  public editAdvert(data , id) {
+    return this.http.put(`${Endpoints.adverts}${id}/`, data);
+  }
+
   public addImageToAdvert(data, id) {
     const dataObj = {
       advert_pk: id,
@@ -29,5 +33,13 @@ export class HttpAdvertsService {
     }    
     const url = `${Endpoints.adverts}${id}/image/`;
     return this.http.post(url, dataObj);
+  }
+
+  public deleteImage(advertId, imageId) {
+    const data = { 
+      id: imageId,
+      advert_pk: advertId
+    }
+    return this.http.delete(`${Endpoints.adverts}${advertId}/image/${imageId}`);
   }
 }

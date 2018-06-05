@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { AdvertModel, ImageModel } from '../../../core/models/advert.model';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -7,12 +7,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './advert-edit-form.component.html',
   styleUrls: ['./advert-edit-form.component.sass']
 })
-export class AdvertEditFormComponent implements OnInit {
+export class AdvertEditFormComponent implements OnChanges {
 
   @Output()
   beforeSendData = new EventEmitter();
   @Input() advertData: AdvertModel;
-  
+
   advertForm = new FormGroup({
     theme: new FormControl(),
     text: new FormControl(),
@@ -22,7 +22,6 @@ export class AdvertEditFormComponent implements OnInit {
   })
   imagesArray: ImageModel[];
   constructor(private fb: FormBuilder) {
-    this.createForm();
   }
 
   createForm() {
@@ -66,7 +65,11 @@ export class AdvertEditFormComponent implements OnInit {
     this.imagesArray = event;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    if(this.advertData) { 
+      console.log(this.advertData);
+      this.createForm();
+    }
   }
 
 }

@@ -29,6 +29,10 @@ export class SessionService {
     return this.getStrageData('auth_token');
   }
 
+  get user() {
+    return this.getStrageData('user_data');
+  }
+
   get loginStatus() {
     return this.token;
   }

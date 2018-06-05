@@ -16,7 +16,7 @@ export class AdvertsComponent implements OnInit, OnDestroy {
   constructor(private sessionService: SessionService, private advertsService: AdvertsService) {
     this.userDataSubscriber$ = this.sessionService.userData.subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
       }
     );
   }

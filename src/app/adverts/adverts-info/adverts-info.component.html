@@ -1,19 +1,26 @@
-<div class="advert-view-wrapper d-flex  m-3">
-  <div class='advert-photo mr-3'>
-    <img [src]="advertData?.images[0].file" alt='advert' *ngIf="advertData?.images[0]; else noAdvertImage" (click)='getMoreInfo(advert.pk)'>
-    <ng-template #noAdvertImage>
-      <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert" (click)='getMoreInfo(advert.pk)'>
-    </ng-template>
+<div class="advert-view-wrapper d-flex flex-column  m-3">
+  <div class='d-flex'>
+    <div class='advert-photo mr-3'>
+        <img [src]="advertData?.images[0].file" alt='advert' *ngIf="advertData?.images[0]; else noAdvertImage" (click)='getMoreInfo(advert.pk)'>
+        <ng-template #noAdvertImage>
+          <img src="https://www.mearto.com/assets/no-image-83a2b680abc7af87cfff7777d0756fadb9f9aecd5ebda5d34f8139668e0fc842.png" alt="advert" (click)='getMoreInfo(advert.pk)'>
+        </ng-template>
+      </div>
+      <div class="advert-info">
+        <div class='adverts-title'>
+          <h1>{{advertData?.theme}}</h1>
+        </div>
+        <div class='adverts-text mb-2'>
+          {{advertData?.text}}
+        </div>
+        <div class='adverts-price'> 
+          Price: {{advertData?.price}} $ 
+        </div>    
+      </div>
   </div>
-  <div class="advert-info">
-    <div class='adverts-title'>
-      <h1>{{advertData?.theme}}</h1>
-    </div>
-    <div class='adverts-text mb-2'>
-      {{advertData?.text}}
-    </div>
-    <div class='adverts-price'> 
-      Price: {{advertData?.price}} $ 
-    </div>    
+  <div class='d-flex justify-content-end'>
+    <button class="btn primary d-flex align-items-center" (click)='showEditProduct(advertData.pk)' *ngIf="isOwner">
+     <span class='pr-2'>Edit</span><fa name='edit'></fa>
+    </button>
   </div>
 </div>

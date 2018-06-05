@@ -1,1 +1,10 @@
-<app-advert-edit-form [advertData]='advertData'></app-advert-edit-form>
+<div class='p-2'>
+    <app-title>
+        <h1>
+            Edit {{advertData?.theme}}     
+        </h1>
+    </app-title>
+    <div class='mt-3'>
+        <app-advert-edit-form (beforeSendData)='editAdvert($event)' [advertData]='advertData'></app-advert-edit-form>
+    </div>
+</div>

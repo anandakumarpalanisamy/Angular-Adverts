@@ -5,6 +5,7 @@ import { AdvertsInfoComponent } from './adverts-info/adverts-info.component';
 import { AdvertsEditComponent } from './adverts-edit/adverts-edit.component';
 import { AdvertsEmptyComponent } from './adverts-empty/adverts-empty.component';
 import { AdvertsCreateComponent } from './adverts-create/adverts-create.component';
+import { EditorGuard } from './shared/guards/editor.guard';
 
 const routes: Routes = [
     { path: '', component: AdvertsComponent, children: [

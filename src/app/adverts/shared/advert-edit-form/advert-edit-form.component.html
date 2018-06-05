@@ -23,7 +23,7 @@
       Active
     </label>
   </div>
-  <app-image-uploader (filesChanged)='setFileList($event)'></app-image-uploader>
+  <app-image-uploader [baseList]='advertData?.images' (filesChanged)='setFileList($event)'></app-image-uploader>
   <div class='d-flex justify-content-end'>
       <button type="submit" class="btn btn-primary my-2">Confirm</button>
   </div>

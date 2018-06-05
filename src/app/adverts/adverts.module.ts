@@ -13,6 +13,11 @@ import { AdvertEditFormComponent } from './shared/advert-edit-form/advert-edit-f
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ImageUploaderModule } from '../ui/image-uploader/image-uploader.module';
 import { TitleModule } from '../ui/title/title.module';
+import { EditorGuard } from './shared/guards/editor.guard';
+
+const GUARD_PROVIDERS = [
+  EditorGuard
+];
 
 @NgModule({
   imports: [
@@ -33,6 +38,7 @@ import { TitleModule } from '../ui/title/title.module';
     AdvertsEmptyComponent,
     AdvertsCreateComponent,
     AdvertEditFormComponent
-  ]
+  ], 
+  providers: []
 })
 export class AdvertsModule { }

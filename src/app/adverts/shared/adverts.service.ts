@@ -22,8 +22,7 @@ export class AdvertsService {
     let images = [];
     if(data.images) {
       images = data.images.map((item) => item.base64);
-    }
-    return this.httpAdverts.createAdvert(advert)
+      return this.httpAdverts.createAdvert(advert)
       .pipe(
         switchMap((res: AdvertModel) => {
           return from(images).pipe(
@@ -31,6 +30,28 @@ export class AdvertsService {
           );
         })
       );
+    } else {
+      return this.httpAdverts.createAdvert(advert);
+    }
+  }
+
+  public editAdvert(data, id) {
+    // dodelat
+    const advert = data.advert;
+    let images = [];
+    if(data.images) {
+      images = data.images.map((item) => item.base64);
+      return this.httpAdverts.editAdvert(advert , id)
+      .pipe(
+        switchMap((res: AdvertModel) => {
+          return from(images).pipe(
+            concatMap((img) => this.httpAdverts.addImageToAdvert(img, res.pk))
+          );
+        })
+      );
+    } else {
+      return this.httpAdverts.editAdvert(advert , id)
+    }
   }
 
   public  addImagesToAdvert(advert, images) {
@@ -41,6 +62,10 @@ export class AdvertsService {
       }
     }
     return arrayOfReadyImages;
+  }
+
+  public deleteImage(advertId, imageId) {
+    return this.httpAdverts.deleteImage(advertId, imageId);
   }
 }
 
